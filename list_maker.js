@@ -1,6 +1,40 @@
-d3.json("http://127.0.0.1:5000/featherweight").then((data) => 
-    {
-        data.forEach(element => console.log(element.name))
-    }
+
+function default_weights() {
+
+    d3.json("http://127.0.0.1:5000/weight").then(function(test) {
+
+    var weights = test;
+
+    d3.select("#weight_class")
+        .selectAll("option")
+        .data(weights)
+        .enter()
+        .append("option")
+        .text(function(d){return d.name})
+        .attr("value", function(d) {return d.name})
+
+    })
+
+};
+
+default_weights();
+
+
+
+d3.selectAll("weight_class").on("change", updateFighters)
+
+
+function updateFighters() {
+
+    var dropdownMenu = d3.select("#weight_class");
+    var dataset = dropdownMenu.property("value");
+
+}
+
+
+// d3.json("http://127.0.0.1:5000/featherweight").then((data) => 
+//     {
+//         data.forEach(element => console.log(element.name))
+//     }
     
-);
+// );

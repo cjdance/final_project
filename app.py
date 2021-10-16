@@ -47,6 +47,14 @@ class fighterModel(db.Model):
         return f"<Fighter {self.name}>"
 
 
+class weightModel(db.Model):
+    __tablename__ = 'weight_data'
+
+    index = db.Column(db.Integer(), primary_key=True)
+    weight_name = db.Column(db.String())
+    weight = db.Column(db.String())
+
+
 @app.route('/')
 def hello():
     return "Hello World!"
@@ -77,6 +85,20 @@ def get_fighter():
         "losses": fighter.n_loss,
         "draws": fighter.n_draw
     } for fighter in fighters]
+
+    response = jsonify(results)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+
+@app.route('/weight', methods = ['GET'])
+def get_weights():
+
+    weights = weightModel.query.all()
+    results = [{
+        "name": weight.weight_name,
+        "weight": weight.weight
+    } for weight in weights]
 
     response = jsonify(results)
     response.headers.add('Access-Control-Allow-Origin', '*')
