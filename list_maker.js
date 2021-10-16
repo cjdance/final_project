@@ -110,7 +110,7 @@ function default_weights() {
         });
 
 
-        console.log(fighter_2);
+        
 
         var title = d3.select("#fighter_2_title");
         var list = d3.select("#fighter_2_text");

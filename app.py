@@ -56,6 +56,14 @@ class weightModel(db.Model):
     weight = db.Column(db.String())
 
 
+class predictModel(db.Model):
+    __tablename__ = 'predict_data'
+
+    index = db.Column(db.Integer(), primary_key=True)
+    weight_name = db.Column(db.String())
+    weight = db.Column(db.String())
+
+
 @app.route('/')
 def hello():
     return "Hello World!"

@@ -15,7 +15,7 @@ function updateCard1() {
         });
 
 
-        console.log(fighter_1);
+        // console.log(fighter_1);
 
         var title = d3.select("#fighter_1_title");
         var list = d3.select("#fighter_1_text");
@@ -95,7 +95,7 @@ function updateCard2() {
         });
 
 
-        console.log(fighter_2);
+        // console.log(fighter_2);
 
         var title = d3.select("#fighter_2_title");
         var list = d3.select("#fighter_2_text");
