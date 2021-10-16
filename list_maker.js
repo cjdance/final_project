@@ -54,12 +54,16 @@ default_weights();
 
 d3.selectAll("#weight_class").on("change", updateFighters)
 
+d3.selectAll("#fighter_1").on("change", updateCard1)
+
+d3.selectAll("#fighter_2").on("change", updateCard2)
+
 
 function updateFighters() {
 
     var dropdownMenu = d3.select("#weight_class option:checked").property("text");
 
-    console.log(dropdownMenu);
+    // console.log(dropdownMenu);
     
     d3.json(`http://127.0.0.1:5000/${dropdownMenu}`).then(function(data) {
 
@@ -98,9 +102,22 @@ function updateFighters() {
 };
 
 
-// d3.json("http://127.0.0.1:5000/featherweight").then((data) => 
-//     {
-//         data.forEach(element => console.log(element.name))
-//     }
-    
-// );
+
+function updateCard1() {
+
+    var dropdownMenu = d3.select("#weight_class option:checked").property("text");
+
+    d3.json(`http://127.0.0.1:5000/${dropdownMenu}`).then(function(data) {
+
+        var fighter = d3.select("#fighter_1 option:checked").property("text");
+
+        var fighter_1 = data.filter(item => {
+            return item.name == fighter;
+        });
+
+        console.log(fighter_1);
+
+        });
+      
+
+    }
