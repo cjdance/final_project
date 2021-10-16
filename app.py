@@ -104,7 +104,7 @@ def get_weights():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route('/flyweight', methods = ['GET'])
+@app.route('/Flyweight', methods = ['GET'])
 def get_flyweight():
     fighters = fighterModel.query.filter(fighterModel.weight == "125 lbs.")
     results = [{
@@ -127,7 +127,7 @@ def get_flyweight():
     return response
 
 
-@app.route('/bantamweight', methods = ['GET'])
+@app.route('/Bantamweight', methods = ['GET'])
 def get_bantamweight():
     fighters = fighterModel.query.filter(fighterModel.weight == "135 lbs.")
     results = [{
@@ -150,7 +150,7 @@ def get_bantamweight():
     return response
 
 
-@app.route('/featherweight', methods = ['GET'])
+@app.route('/Featherweight', methods = ['GET'])
 def get_featherweight():
     fighters = fighterModel.query.filter(fighterModel.weight == "145 lbs.")
     results = [{
