@@ -60,8 +60,11 @@ class predictModel(db.Model):
     __tablename__ = 'predict_data'
 
     index = db.Column(db.Integer(), primary_key=True)
-    weight_name = db.Column(db.String())
-    weight = db.Column(db.String())
+    fighter_pair = db.Column(db.String())
+    fighter_1 = db.Column(db.String())
+    fighter_2 = db.Column(db.String())
+    weight_class = db.Column(db.String())
+    winner = db.Column(db.String())
 
 
 @app.route('/')
@@ -278,7 +281,19 @@ def get_lightheavyweight():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+@app.route('/predictions', methods = ['GET'])
+def get_winner():
+    fights = predictModel.query.all()
+    results = [{
+        "fighter_pair": fight.fighter_pair,
+        "fighter_1": fight.fighter_1,
+        "fighter_2": fight.fighter_2,
+        "winner": fight.winner
+    } for fight in fights]
 
+    response = jsonify(results)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 if __name__ == "__main__":
     app.run(debug=True)
