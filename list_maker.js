@@ -57,11 +57,19 @@ d3.selectAll("#weight_class").on("change", updateFighters)
 
 function updateFighters() {
 
-    var dropdownMenu = d3.select("#weight_class option:checked").property("value");
+    var dropdownMenu = d3.select("#weight_class option:checked").property("text");
+
+    console.log(dropdownMenu);
     
     d3.json(`http://127.0.0.1:5000/${dropdownMenu}`).then(function(data) {
 
     var fighters = data;
+
+    d3.select("#fighter_1")
+        .selectAll("option")
+        .data([])
+        .exit()
+        .remove()
 
     d3.select("#fighter_1")
         .selectAll("option")
@@ -72,7 +80,20 @@ function updateFighters() {
         .attr("value", function(d) {return d.name})
         .attr("id", function(d) {return d.name})
         
+    d3.select("#fighter_2")
+        .selectAll("option")
+        .data([])
+        .exit()
+        .remove()
 
+    d3.select("#fighter_2")
+        .selectAll("option")
+        .data(fighters)
+        .enter()
+        .append("option")
+        .text(function(d){return d.name})
+        .attr("value", function(d) {return d.name})
+        .attr("id", function(d) {return d.name})
     })
 };
 
