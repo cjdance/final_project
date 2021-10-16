@@ -40,9 +40,26 @@ function default_weights() {
         .attr("id", function(d) {return d.name})
 
 
-    })
+    var fighter = d3.select("#fighter_1 option:checked").property("text");
+
+    var fighter_1 = data.filter(item => {
+        return item.name == fighter;
+    });
+
+    d3.select('#fighter_1_title')
+        .selectAll('h3')
+        .data(fighter_1)
+        .enter()
+        .append('h3')
+        .text(function(d){return d.name})
+        .attr("value", function(d) {return d.name})
+        .attr("id", function(d) {return d.name})
+
+    });
 
     })
+
+
 
 
 
@@ -116,6 +133,23 @@ function updateCard1() {
         });
 
         console.log(fighter_1);
+
+        var title = d3.select("#fighter_1_title");
+        var list = d3.select("fighter_1_list");
+        var text = d3.select("fighter_1_text");
+
+        title.selectAll('h3').data([]).exit().remove();
+        list.selectAll("li").data([]).exit().remove();
+        text.data([]).exit().remove();
+
+        title.data(fighter_1)
+            .selectAll('h3')
+            .data(fighter_1)
+            .enter()
+            .append('h3')
+            .text(function(d){return d.name})
+            .attr("value", function(d) {return d.name})
+            .attr("id", function(d) {return d.name})
 
         });
       
