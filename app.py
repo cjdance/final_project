@@ -262,27 +262,7 @@ def get_lightheavyweight():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route('/Heavyweight', methods = ['GET'])
-def get_heavyweight():
-    fighters = fighterModel.query.filter(or_(fighterModel.weight != weight for weight in ["205 lbs.", "185 lbs.", "170 lbs.", "155 lbs.", "145 lbs.", "135 lbs.", "125 lbs."]))
-    results = [{
-        "name": fighter.name,
-        "stance": fighter.stance,
-        "weight": fighter.weight,
-        "SApM": fighter.sig_str_abs_pM,
-        "SLpM": fighter.sig_str_land_pM,
-        "SDpct": fighter.sig_str_def_pct,
-        "SLpct": fighter.sig_str_land_pct,
-        "TDavg": fighter.td_avg,
-        "TDacc": fighter.td_land_pct,
-        "wins": fighter.n_win,
-        "losses": fighter.n_loss,
-        "draws": fighter.n_draw
-    } for fighter in fighters]
 
-    response = jsonify(results)
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    return response
 
 if __name__ == "__main__":
     app.run(debug=True)
