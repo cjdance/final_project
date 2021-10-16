@@ -14,6 +14,34 @@ function default_weights() {
         .attr("value", function(d) {return d.name})
         .attr("id", function(d) {return d.name})
 
+
+    var dropdownMenu = d3.select("#weight_class option:checked").property("value");
+    
+    d3.json(`http://127.0.0.1:5000/${dropdownMenu}`).then(function(data) {
+    
+    var fighters = data;
+    
+    d3.select("#fighter_1")
+            .selectAll("option")
+            .data(fighters)
+            .enter()
+            .append("option")
+            .text(function(d){return d.name})
+            .attr("value", function(d) {return d.name})
+            .attr("id", function(d) {return d.name})
+            
+    d3.select("#fighter_2")
+        .selectAll("option")
+        .data(fighters)
+        .enter()
+        .append("option")
+        .text(function(d){return d.name})
+        .attr("value", function(d) {return d.name})
+        .attr("id", function(d) {return d.name})
+
+
+    })
+
     })
 
 
@@ -43,6 +71,7 @@ function updateFighters() {
         .text(function(d){return d.name})
         .attr("value", function(d) {return d.name})
         .attr("id", function(d) {return d.name})
+        
 
     })
 };
