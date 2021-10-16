@@ -59,18 +59,96 @@ def hello():
 # Flask Routes
 #################################################
 
-@app.route('/fighters')
+@app.route('/fighters', methods = ['GET'])
 def get_fighter():
 
     fighters = fighterModel.query.all()
     results = [{
         "name": fighter.name,
         "stance": fighter.stance,
-        "weight": fighter.weight
+        "weight": fighter.weight,
+        "SApM": fighter.sig_str_abs_pM,
+        "SLpM": fighter.sig_str_land_pM,
+        "SDpct": fighter.sig_str_def_pct,
+        "SLpct": fighter.sig_str_land_pct,
+        "TDavg": fighter.td_avg,
+        "TDacc": fighter.td_land_pct,
+        "wins": fighter.n_win,
+        "losses": fighter.n_loss,
+        "draws": fighter.n_draw
     } for fighter in fighters]
 
-    return {"count": len(results), "fighters": results}
+    response = jsonify(results)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
+@app.route('/flyweight', methods = ['GET'])
+def get_flyweight():
+    fighters = fighterModel.query.filter(fighterModel.weight == "125 lbs.")
+    results = [{
+        "name": fighter.name,
+        "stance": fighter.stance,
+        "weight": fighter.weight,
+        "SApM": fighter.sig_str_abs_pM,
+        "SLpM": fighter.sig_str_land_pM,
+        "SDpct": fighter.sig_str_def_pct,
+        "SLpct": fighter.sig_str_land_pct,
+        "TDavg": fighter.td_avg,
+        "TDacc": fighter.td_land_pct,
+        "wins": fighter.n_win,
+        "losses": fighter.n_loss,
+        "draws": fighter.n_draw
+    } for fighter in fighters]
+
+    response = jsonify(results)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+
+@app.route('/bantamweight', methods = ['GET'])
+def get_bantamweight():
+    fighters = fighterModel.query.filter(fighterModel.weight == "135 lbs.")
+    results = [{
+        "name": fighter.name,
+        "stance": fighter.stance,
+        "weight": fighter.weight,
+        "SApM": fighter.sig_str_abs_pM,
+        "SLpM": fighter.sig_str_land_pM,
+        "SDpct": fighter.sig_str_def_pct,
+        "SLpct": fighter.sig_str_land_pct,
+        "TDavg": fighter.td_avg,
+        "TDacc": fighter.td_land_pct,
+        "wins": fighter.n_win,
+        "losses": fighter.n_loss,
+        "draws": fighter.n_draw
+    } for fighter in fighters]
+
+    response = jsonify(results)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+
+@app.route('/featherweight', methods = ['GET'])
+def get_featherweight():
+    fighters = fighterModel.query.filter(fighterModel.weight == "145 lbs.")
+    results = [{
+        "name": fighter.name,
+        "stance": fighter.stance,
+        "weight": fighter.weight,
+        "SApM": fighter.sig_str_abs_pM,
+        "SLpM": fighter.sig_str_land_pM,
+        "SDpct": fighter.sig_str_def_pct,
+        "SLpct": fighter.sig_str_land_pct,
+        "TDavg": fighter.td_avg,
+        "TDacc": fighter.td_land_pct,
+        "wins": fighter.n_win,
+        "losses": fighter.n_loss,
+        "draws": fighter.n_draw
+    } for fighter in fighters]
+
+    response = jsonify(results)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 if __name__ == "__main__":
     app.run(debug=True)
