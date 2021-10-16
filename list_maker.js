@@ -20,6 +20,8 @@ function default_weights() {
     d3.json(`http://127.0.0.1:5000/${dropdownMenu}`).then(function(data) {
     
     var fighters = data;
+
+    fighters = fighters.sort(function (a,b) {return d3.ascending(a.name, b.name);});
     
     d3.select("#fighter_1")
             .selectAll("option")
@@ -54,6 +56,15 @@ function default_weights() {
         .text(function(d){return d.name})
         .attr("value", function(d) {return d.name})
         .attr("id", function(d) {return d.name})
+
+    d3.select('#fighter_1_text')
+        .selectAll('li')
+        .data(fighter_1)
+        .enter()
+        .append('li')
+        .text(function(d){return d.SApM})
+        .attr("value", function(d) {return d.SApM})
+        .attr("id", "fighter_1_SApM")
 
     });
 
@@ -135,12 +146,11 @@ function updateCard1() {
         console.log(fighter_1);
 
         var title = d3.select("#fighter_1_title");
-        var list = d3.select("fighter_1_list");
-        var text = d3.select("fighter_1_text");
+        var list = d3.select("#fighter_1_text");
 
         title.selectAll('h3').data([]).exit().remove();
-        list.selectAll("li").data([]).exit().remove();
-        text.data([]).exit().remove();
+        list.selectAll('li').data([]).exit().remove();
+
 
         title.data(fighter_1)
             .selectAll('h3')
@@ -149,7 +159,17 @@ function updateCard1() {
             .append('h3')
             .text(function(d){return d.name})
             .attr("value", function(d) {return d.name})
-            .attr("id", function(d) {return d.name})
+            .attr("id", function(d) {return d.name});
+
+
+        list.data(fighter_1)
+            .selectAll('li')
+            .data(fighter_1)
+            .enter()
+            .append('li')
+            .text(function(d){return d.SApM})
+            .attr("value", function(d) {return d.SApM})
+            .attr("id", "fighter_1_SApM");
 
         });
       
