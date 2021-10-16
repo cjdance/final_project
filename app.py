@@ -84,7 +84,8 @@ def get_fighter():
         "TDacc": fighter.td_land_pct,
         "wins": fighter.n_win,
         "losses": fighter.n_loss,
-        "draws": fighter.n_draw
+        "draws": fighter.n_draw,
+        "subs": fighter.sub_avg
     } for fighter in fighters]
 
     response = jsonify(results)
@@ -120,7 +121,8 @@ def get_flyweight():
         "TDacc": fighter.td_land_pct,
         "wins": fighter.n_win,
         "losses": fighter.n_loss,
-        "draws": fighter.n_draw
+        "draws": fighter.n_draw,
+        "subs": fighter.sub_avg
     } for fighter in fighters]
 
     response = jsonify(results)
@@ -143,7 +145,8 @@ def get_bantamweight():
         "TDacc": fighter.td_land_pct,
         "wins": fighter.n_win,
         "losses": fighter.n_loss,
-        "draws": fighter.n_draw
+        "draws": fighter.n_draw,
+        "subs": fighter.sub_avg
     } for fighter in fighters]
 
     response = jsonify(results)
@@ -166,7 +169,8 @@ def get_featherweight():
         "TDacc": fighter.td_land_pct,
         "wins": fighter.n_win,
         "losses": fighter.n_loss,
-        "draws": fighter.n_draw
+        "draws": fighter.n_draw,
+        "subs": fighter.sub_avg
     } for fighter in fighters]
 
     response = jsonify(results)
@@ -188,7 +192,8 @@ def get_lightweight():
         "TDacc": fighter.td_land_pct,
         "wins": fighter.n_win,
         "losses": fighter.n_loss,
-        "draws": fighter.n_draw
+        "draws": fighter.n_draw,
+        "subs": fighter.sub_avg
     } for fighter in fighters]
 
     response = jsonify(results)
@@ -211,7 +216,8 @@ def get_welterweight():
         "TDacc": fighter.td_land_pct,
         "wins": fighter.n_win,
         "losses": fighter.n_loss,
-        "draws": fighter.n_draw
+        "draws": fighter.n_draw,
+        "subs": fighter.sub_avg
     } for fighter in fighters]
 
     response = jsonify(results)
@@ -233,7 +239,8 @@ def get_middleweight():
         "TDacc": fighter.td_land_pct,
         "wins": fighter.n_win,
         "losses": fighter.n_loss,
-        "draws": fighter.n_draw
+        "draws": fighter.n_draw,
+        "subs": fighter.sub_avg
     } for fighter in fighters]
 
     response = jsonify(results)
@@ -255,7 +262,8 @@ def get_lightheavyweight():
         "TDacc": fighter.td_land_pct,
         "wins": fighter.n_win,
         "losses": fighter.n_loss,
-        "draws": fighter.n_draw
+        "draws": fighter.n_draw,
+        "subs": fighter.sub_avg
     } for fighter in fighters]
 
     response = jsonify(results)
