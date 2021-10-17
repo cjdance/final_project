@@ -82,7 +82,7 @@ def predict():
         form_f1 = request.form['f1']
         form_f2 = request.form['f2']
 
-        fighters = fighterModel.query.filter(fighterModel.name == form_f1 | fighterModel.name == form_f2)
+        fighters = fighterModel.query.all()
         results = [{
         "name": fighter.name,
         "stance": fighter.stance,
