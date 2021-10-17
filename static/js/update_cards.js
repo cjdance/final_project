@@ -6,7 +6,7 @@ function updateCard1() {
 
     var dropdownMenu = d3.select("#weight_class option:checked").property("text");
 
-    d3.json(`http://127.0.0.1:5000/${dropdownMenu}`).then(function(data) {
+    d3.json(`https://ufc-predict-project.herokuapp.com/${dropdownMenu}`).then(function(data) {
 
         var fighter = d3.select("#fighter_1 option:checked").property("text");
 
@@ -86,7 +86,7 @@ function updateCard2() {
 
     var dropdownMenu = d3.select("#weight_class option:checked").property("text");
 
-    d3.json(`http://127.0.0.1:5000/${dropdownMenu}`).then(function(data) {
+    d3.json(`https://ufc-predict-project.herokuapp.com/${dropdownMenu}`).then(function(data) {
 
         var fighter = d3.select("#fighter_2 option:checked").property("text");
 
