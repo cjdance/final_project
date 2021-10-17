@@ -281,14 +281,45 @@ def get_lightheavyweight():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route('/predictions', methods = ['GET'])
-def get_winner():
-    fights = predictModel.query.all()
+@app.route('/Flyweight_predictions', methods = ['GET'])
+def get_flywin():
+    fights = predictModel.query.filter(predictModel.weight_class == "125 lbs./125 lbs.")
     results = [{
         "fighter_pair": fight.fighter_pair,
         "fighter_1": fight.fighter_1,
         "fighter_2": fight.fighter_2,
-        "winner": fight.winner
+        "winner": fight.winner,
+        "weight_class": fight.weight_class
+    } for fight in fights]
+
+    response = jsonify(results)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+@app.route('/Bantamweight_predictions', methods = ['GET'])
+def get_ban_win():
+    fights = predictModel.query.filter(predictModel.weight_class == "135 lbs./135 lbs.")
+    results = [{
+        "fighter_pair": fight.fighter_pair,
+        "fighter_1": fight.fighter_1,
+        "fighter_2": fight.fighter_2,
+        "winner": fight.winner,
+        "weight_class": fight.weight_class
+    } for fight in fights]
+
+    response = jsonify(results)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+@app.route('/Featherweight_predictions', methods = ['GET'])
+def get_feathwin():
+    fights = predictModel.query.filter(predictModel.weight_class == "145 lbs./145 lbs.")
+    results = [{
+        "fighter_pair": fight.fighter_pair,
+        "fighter_1": fight.fighter_1,
+        "fighter_2": fight.fighter_2,
+        "winner": fight.winner,
+        "weight_class": fight.weight_class
     } for fight in fights]
 
     response = jsonify(results)
