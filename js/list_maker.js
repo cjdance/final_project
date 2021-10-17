@@ -1,7 +1,7 @@
 
 function default_weights() {
 
-    d3.json("http://127.0.0.1:5000/weight").then(function(test) {
+    d3.json("https://ufc-predict-project.herokuapp.com/weight").then(function(test) {
 
     var weights = test;
 
@@ -17,7 +17,7 @@ function default_weights() {
 
     var dropdownMenu = d3.select("#weight_class option:checked").property("value");
     
-    d3.json(`http://127.0.0.1:5000/${dropdownMenu}`).then(function(data) {
+    d3.json(`https://ufc-predict-project.herokuapp.com/${dropdownMenu}`).then(function(data) {
     
     var fighters = data;
 
@@ -195,7 +195,7 @@ function updateFighters() {
 
     // console.log(dropdownMenu);
     
-    d3.json(`http://127.0.0.1:5000/${dropdownMenu}`).then(function(data) {
+    d3.json(`https://ufc-predict-project.herokuapp.com/${dropdownMenu}`).then(function(data) {
 
     var fighters = data;
 
