@@ -18,7 +18,35 @@ function predictFight() {
             return item.fighter_pair == fight_pair;  
         });
 
+        d3.select('#fight_winner').selectAll('h1').data([]).exit().remove();
+
         console.log(result);
+
+        if (result.winner == "Winner-Fighter 1") {
+
+            d3.select('#fight_winner')
+                .selectAll('h1')
+                .data(result)
+                .enter()
+                .append('h1')
+                .text(function(d){`Predicted Winner: ${d.fighter_2}`})
+                .attr("value", function(d) {return d.fighter_1})
+                .attr("id", function(d) {return d.fighter_1})
+                .attr("class", "jumbotron");
+
+        } else {
+
+            d3.select('#fight_winner')
+                .selectAll('h1')
+                .data(result)
+                .enter()
+                .append('h1')
+                .text(function(d){return `Predicted Winner: ${d.fighter_2}`})
+                .attr("value", function(d) {return d.fighter_2})
+                .attr("id", function(d) {return d.fighter_2})
+                .attr("class", "jumbotron");
+
+        }
 
 
 

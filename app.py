@@ -326,5 +326,69 @@ def get_feathwin():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+
+@app.route('/Lightweight_predictions', methods = ['GET'])
+def get_lightwin():
+    fights = predictModel.query.filter(predictModel.weight_class == "155 lbs./155 lbs.")
+    results = [{
+        "fighter_pair": fight.fighter_pair,
+        "fighter_1": fight.fighter_1,
+        "fighter_2": fight.fighter_2,
+        "winner": fight.winner,
+        "weight_class": fight.weight_class
+    } for fight in fights]
+
+    response = jsonify(results)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+
+@app.route('/Welterweight_predictions', methods = ['GET'])
+def get_weltwin():
+    fights = predictModel.query.filter(predictModel.weight_class == "170 lbs./170 lbs.")
+    results = [{
+        "fighter_pair": fight.fighter_pair,
+        "fighter_1": fight.fighter_1,
+        "fighter_2": fight.fighter_2,
+        "winner": fight.winner,
+        "weight_class": fight.weight_class
+    } for fight in fights]
+
+    response = jsonify(results)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+
+@app.route('/Middleweight_predictions', methods = ['GET'])
+def get_middwin():
+    fights = predictModel.query.filter(predictModel.weight_class == "185 lbs./185 lbs.")
+    results = [{
+        "fighter_pair": fight.fighter_pair,
+        "fighter_1": fight.fighter_1,
+        "fighter_2": fight.fighter_2,
+        "winner": fight.winner,
+        "weight_class": fight.weight_class
+    } for fight in fights]
+
+    response = jsonify(results)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+
+@app.route('/Light-Heavyweight_predictions', methods = ['GET'])
+def get_lheavywin():
+    fights = predictModel.query.filter(predictModel.weight_class == "205 lbs./205 lbs.")
+    results = [{
+        "fighter_pair": fight.fighter_pair,
+        "fighter_1": fight.fighter_1,
+        "fighter_2": fight.fighter_2,
+        "winner": fight.winner,
+        "weight_class": fight.weight_class
+    } for fight in fights]
+
+    response = jsonify(results)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
 if __name__ == "__main__":
     app.run(debug=True)
