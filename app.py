@@ -1,5 +1,5 @@
 #Dependencies and Setup
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template, request
 from sqlalchemy import create_engine
 from sqlalchemy import or_
 from sqlalchemy.orm import Session
@@ -72,7 +72,18 @@ class predictModel(db.Model):
 def hello():
     return "Hello World!"
 
-    
+@app.route('/form')
+def form():
+    return render_template('index.html')   
+
+
+@app.route('/data')
+def predict():
+    if request.method == 'GET':
+        return f"The URL /data is accessed directly. Try going to '/form' to submit form"
+    if request.method == 'POST':
+        form_data = request.form
+        return render_template('data.html',form_data = form_data)
 
 #================================================================================
 
@@ -118,29 +129,6 @@ def get_weights():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-# @app.route('/predict', methods = ['GET', 'POST'])
-# def get_predict():
-
-#     ufc_model = load_model("ufc_model_trained_2.h5")
-
-#     fighter_1 = request.
-
-#     fighters = fighterModel.query.all()
-#     results = [{
-#         "name": fighter.name,
-#         "stance": fighter.stance,
-#         "weight": fighter.weight,
-#         "SApM": fighter.sig_str_abs_pM,
-#         "SLpM": fighter.sig_str_land_pM,
-#         "SDpct": fighter.sig_str_def_pct,
-#         "SLpct": fighter.sig_str_land_pct,
-#         "TDavg": fighter.td_avg,
-#         "TDacc": fighter.td_land_pct,
-#         "wins": fighter.n_win,
-#         "losses": fighter.n_loss,
-#         "draws": fighter.n_draw,
-#         "subs": fighter.sub_avg
-#     } for fighter in fighters]
 
 @app.route('/Flyweight', methods = ['GET'])
 def get_flyweight():
@@ -305,6 +293,31 @@ def get_lightheavyweight():
     response = jsonify(results)
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
+
+
+# @app.route('/predict', methods = ['GET', 'POST'])
+# def get_predict():
+
+#     ufc_model = load_model("ufc_model_trained_2.h5")
+
+#     fighter_1 = request.
+
+#     fighters = fighterModel.query.all()
+#     results = [{
+#         "name": fighter.name,
+#         "stance": fighter.stance,
+#         "weight": fighter.weight,
+#         "SApM": fighter.sig_str_abs_pM,
+#         "SLpM": fighter.sig_str_land_pM,
+#         "SDpct": fighter.sig_str_def_pct,
+#         "SLpct": fighter.sig_str_land_pct,
+#         "TDavg": fighter.td_avg,
+#         "TDacc": fighter.td_land_pct,
+#         "wins": fighter.n_win,
+#         "losses": fighter.n_loss,
+#         "draws": fighter.n_draw,
+#         "subs": fighter.sub_avg
+#     } for fighter in fighters]
 
 # @app.route('/Flyweight_predictions', methods = ['GET'])
 # def get_flywin():
