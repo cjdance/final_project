@@ -67,12 +67,7 @@ class predictModel(db.Model):
     weight_class = db.Column(db.String())
     winner = db.Column(db.String())
 
-
 @app.route('/')
-def hello():
-    return "Hello World!"
-
-@app.route('/form')
 def form():
     return render_template('index.html')   
 
