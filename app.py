@@ -82,9 +82,9 @@ def predict():
         form_f1 = request.form.get['f1']
         form_f2 = request.form.get['f2']
 
-        fighters = fighterModel.query.filter(fighterModel.name == form_f1)
+        fighters = fighterModel.query.filter(fighterModel.name == form_f1 & fighterModel.name == form_f2)
         results = [{
-        "name": fighter.name,
+        "name": form_f1,
         "stance": fighter.stance,
         "weight": fighter.weight,
         "SApM": fighter.sig_str_abs_pM,
@@ -101,7 +101,7 @@ def predict():
 
         response = jsonify(results)
         response.headers.add('Access-Control-Allow-Origin', '*')
-        return response
+        return render_template("data.html")
 
 #================================================================================
 

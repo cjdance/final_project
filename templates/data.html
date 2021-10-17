@@ -44,51 +44,9 @@
         </div>
       </nav>
 
-      <div class="row">
-             <div class="col-lg-4" >
-              <div class="card border-primary mb-3" id = "fighter_1_card">
-                <div class="card-header" id = "fighter_1_header">Fighter 1</div>
-                <div class="card-body" id = "fighter_1_body">
-                  <h4 class="card-title" id = "fighter_1_title"></h4>
-                  <p class="card-text" id = "fighter_1_text">
-                    <ul id = "fighter_1_list"></ul>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-10 col-md-4 col-lg-4">
-              <div class="card border-primary mb-3" id = "fighter_2_card">
-                <div class="card-header" id = "fighter_2_header">Fighter 2</div>
-                <div class="card-body" id = "fighter_2_body">
-                  <h4 class="card-title" id = "fighter_2_title"></h4>
-                  <p class="card-text" id = "fighter_2_text">
-                    <ul id = "fighter_2_list"></ul>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-2">
-                  <legend>Fighter Select</legend>
-                  <div class="form-group">
-                    <form method="POST" action="/data">
-                    <h3>Weight Class</h3>
-                    <select class="form-select" id="weight_class" name="weight"></select>                             
-                    
-                    <h3>Fighter 1</h3>
-                    <select class="form-select" id="fighter_1" name="f1"></select>
-                                    
-                    <h3>Fighter 2</h3>
-                    <select class="form-select" id="fighter_2" name="f2"></select>
-                  <br>
-                  <button type="submit" class="btn btn-primary btn-lg" id="fight_predict">Predict Winner</button>
-                  </form>
-                  </div>
-        </div>
-        <div class="row">
-          <br>
-          <h1 id = "fight_winner"></h1>
-        </div>
-    </div>
+
+
+    
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
