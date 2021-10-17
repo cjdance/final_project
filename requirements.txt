@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 alembic==1.7.4
 astor==0.8.1
 async-generator==1.10
@@ -15,8 +14,6 @@ cssselect==1.1.0
 cycler==0.10.0
 dateparser==0.7.2
 entrypoints==0.3
-=======
->>>>>>> 416d453bcf580ffc79186af04e5c3548f64df012
 Flask==2.0.2
 Flask-Migrate==3.1.0
 Flask-SQLAlchemy==2.5.1
