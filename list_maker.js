@@ -199,6 +199,10 @@ function updateFighters() {
 
     var fighters = data;
 
+    fighters = fighters.sort(function (a,b) {return d3.ascending(a.name, b.name);});
+
+   
+
     d3.select("#fighter_1")
         .selectAll("option")
         .data([])
