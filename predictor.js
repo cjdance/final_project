@@ -18,7 +18,7 @@ function predictFight() {
             return item.fighter_pair == fight_pair;  
         });
 
-        // console.log(result);
+        console.log(result);
 
 
 
