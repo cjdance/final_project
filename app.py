@@ -9,9 +9,10 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 
-#use flask_pymongo to set up mongo connection
+
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:cdw@localhost/ufc"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://lobpnlrdoxctkw:a9aa044b579fbbc191e8162a7b4eaffa687a966b9b9bde7f0d404e230b415102@ec2-54-164-56-10.compute-1.amazonaws.com:5432/da6f3crjlcgotj"
+# "postgresql://postgres:cdw@localhost/ufc"
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
