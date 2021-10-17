@@ -69,7 +69,7 @@ class predictModel(db.Model):
 
 @app.route('/')
 def form():
-       
+    return render_template('index.html')  
 
 
 @app.route('/data')
