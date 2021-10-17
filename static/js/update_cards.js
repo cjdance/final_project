@@ -1,6 +1,6 @@
-d3.selectAll("#fighter_1").on("change", updateCard1)
+d3.selectAll("#fighter_1").on("change", updateCard1);
 
-d3.selectAll("#fighter_2").on("change", updateCard2)
+d3.selectAll("#fighter_2").on("change", updateCard2);
 
 function updateCard1() {
 

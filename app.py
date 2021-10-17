@@ -69,18 +69,39 @@ class predictModel(db.Model):
 
 @app.route('/')
 def form():
-    return render_template('index.html')   
+       
 
 
 @app.route('/data')
 def predict():
     if request.method == 'GET':
-        return f"The URL /data is accessed directly. Try going to '/form' to submit form"
+        return render_template('index.html')
     if request.method == 'POST':
+
         form_weight = request.form['weight']
         form_f1 = request.form['f1']
         form_f2 = request.form['f2']
-        return jsonify(form_f1)
+
+        fighters = fighterModel.query.filter(fighterModel.name == form_f1 | fighterModel.name == form_f2)
+        results = [{
+        "name": fighter.name,
+        "stance": fighter.stance,
+        "weight": fighter.weight,
+        "SApM": fighter.sig_str_abs_pM,
+        "SLpM": fighter.sig_str_land_pM,
+        "SDpct": fighter.sig_str_def_pct,
+        "SLpct": fighter.sig_str_land_pct,
+        "TDavg": fighter.td_avg,
+        "TDacc": fighter.td_land_pct,
+        "wins": fighter.n_win,
+        "losses": fighter.n_loss,
+        "draws": fighter.n_draw,
+        "subs": fighter.sub_avg
+        } for fighter in fighters]
+
+        response = jsonify(results)
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        
 
 #================================================================================
 
