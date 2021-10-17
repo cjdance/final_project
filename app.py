@@ -77,8 +77,10 @@ def predict():
     if request.method == 'GET':
         return f"The URL /data is accessed directly. Try going to '/form' to submit form"
     if request.method == 'POST':
-        form_data = request.form
-        return jsonify(form_data)
+        form_weight = request.form['weight']
+        form_f1 = request.form['f1']
+        form_f2 = request.form['f2']
+        return jsonify(form_f1)
 
 #================================================================================
 
