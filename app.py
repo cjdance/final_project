@@ -78,7 +78,7 @@ def predict():
         return f"The URL /data is accessed directly. Try going to '/form' to submit form"
     if request.method == 'POST':
         form_data = request.form
-        return render_template('data.html',form_data = form_data)
+        return jsonify(form_data)
 
 #================================================================================
 
