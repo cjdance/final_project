@@ -78,11 +78,11 @@ def predict():
         return render_template('index.html')
     if request.method == 'POST':
 
-        form_weight = request.form['weight']
-        form_f1 = request.form['f1']
-        form_f2 = request.form['f2']
+        form_weight = request.form.get['weight']
+        form_f1 = request.form.get['f1']
+        form_f2 = request.form.get['f2']
 
-        fighters = fighterModel.query.all()
+        fighters = fighterModel.query.filter(fighterModel.name == form_f1)
         results = [{
         "name": fighter.name,
         "stance": fighter.stance,
