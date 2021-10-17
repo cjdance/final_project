@@ -69,7 +69,9 @@ class predictModel(db.Model):
 
 @app.route('/')
 def form():
-    return render_template('index.html')  
+    if request.method == 'GET':
+        return render_template('index.html')
+     
 
 
 @app.route('/data')
@@ -77,12 +79,12 @@ def predict():
     if request.method == 'GET':
         return render_template('index.html')
     if request.method == 'POST':
-
+        
         form_weight = request.form.get['weight']
         form_f1 = request.form.get['f1']
         form_f2 = request.form.get['f2']
 
-        fighters = fighterModel.query.filter(fighterModel.name == form_f1 & fighterModel.name == form_f2)
+        fighters = fighterModel.query.all()
         results = [{
         "name": form_f1,
         "stance": fighter.stance,
@@ -101,7 +103,8 @@ def predict():
 
         response = jsonify(results)
         response.headers.add('Access-Control-Allow-Origin', '*')
-        return render_template("data.html")
+        return render_template("data.html", data=response)
+        
 
 #================================================================================
 
