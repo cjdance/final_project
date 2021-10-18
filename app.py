@@ -75,6 +75,12 @@ class predictModel(db.Model):
 def form():
     if request.method == 'GET':
         return render_template('index.html')
+
+
+@app.route('/data_library')
+def data_lib():
+    if request.method == 'GET':
+        return render_template('data_lib.html')
      
 
 

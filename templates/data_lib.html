@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>UFC Fight Analysis</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="../static/css/bootstrap.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">UFC Fight Predictor</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="/fight">Fight Stats</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/fighters">Fighter Stats</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/data_library">Data Library</a>
+              </li>
+            </ul>
+            <div class="nav-item dropdown me-sm-2">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">UFC Stats</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">GitHub Repo</a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <br>
+      <div class="row">
+        <div class="col-sm-10 col-md-4 col-lg-4">
+         <div class="card text-white bg-primary mb-3">
+           <div class="card-header">Significant Strikes Landed per Minute (SLpM)</div>
+           <div class="card-body">
+             <h4 class="card-title">SLpM</h4>
+             <p class="card-text">
+               Significant strikes landed per minute is a measure of how many strikes at distance and power strikes in the clinch and on the ground a fighter lands on their opponent per minute of fight time.
+             </p>
+           </div>
+         </div>
+       </div>
+       <div class="col-sm-10 col-md-4 col-lg-4">
+         <div class="card text-white bg-secondary mb-3">
+           <div class="card-header">Significant Strikes Absorbed per Minute (SApM)</div>
+           <div class="card-body">
+             <h4 class="card-title">SApM</h4>
+             <p class="card-text">
+               Significant strikes absorbed per minute is a measure of how many strikes at distance and power strikes in the clinch and on the ground a fighter is hit with by their opponent per minute of fight time.
+             </p>
+           </div>
+         </div>
+       </div>
+       <div class="col-sm-10 col-md-4 col-lg-4">
+        <div class="card text-white bg-primary mb-3">
+          <div class="card-header">Significant Strikes Landed Percentage (SL%)</div>
+          <div class="card-body">
+            <h4 class="card-title">SL%</h4>
+            <p class="card-text">
+              Significant strikes landed percentage is the percentage of significant strikes a fighter lands based on the total they attempt in their fights.
+                            
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-10 col-md-4 col-lg-4">
+       <div class="card text-white bg-primary mb-3">
+         <div class="card-header">Significant Strikes Defended Percentage (SD%)</div>
+         <div class="card-body">
+           <h4 class="card-title">SD%</h4>
+           <p class="card-text">
+            Significant strikes landed percentage is the percentage of significant strikes a fighter blocks or avoids based on the total their opponents have thrown at them.
+           </p>
+         </div>
+       </div>
+     </div>
+     <div class="col-sm-10 col-md-4 col-lg-4">
+       <div class="card text-white bg-secondary mb-3">
+         <div class="card-header">Takedowns per 15 minutes (TDp15M)</div>
+         <div class="card-body">
+           <h4 class="card-title">TDp15M</h4>
+           <p class="card-text">
+             Takedowns per 15 minutes is a measure of the number of completed takedowns a fighter averages in 15 minutes of fight time. 
+             <br>
+             A takedown is defined as a fighter forcing their opponent off their feet and achieving a measure of control which prevents them from rising immediately to their feet again.
+           </p>
+         </div>
+       </div>
+     </div>
+     <div class="col-sm-10 col-md-4 col-lg-4">
+      <div class="card text-white bg-primary mb-3">
+        <div class="card-header">Takedown Accuracy (TDacc)</div>
+        <div class="card-body">
+          <h4 class="card-title">TDacc</h4>
+          <p class="card-text">
+            Takedown accuracy is a percentage measure of the number of successful takedowns a fighter has achieved out of their total takedown attempts.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-sm-10 col-md-4 col-lg-4">
+     <div class="card text-white bg-primary mb-3">
+       <div class="card-header">Submission Average per 15 Minutes (SubAVG)</div>
+       <div class="card-body">
+         <h4 class="card-title">SubAVG</h4>
+         <p class="card-text">
+           Submission average is a measure of the number of submission attempts a fighter averages per 15 minutes of fight time.
+         </p>
+       </div>
+     </div>
+   </div>
+   <div class="col-sm-10 col-md-4 col-lg-4">
+     <div class="card text-white bg-secondary mb-3">
+       <div class="card-header">Stance</div>
+       <div class="card-body">
+         <h4 class="card-title">Stance</h4>
+         <p class="card-text">
+           Stance is a label for the foot/hand which a fighter leads with when fighting. Orthodox fights have their left hand and foot forward, Southpaw have their right hand and foot forward.
+         </p>
+       </div>
+     </div>
+   </div>
+   <div class="col-sm-10 col-md-4 col-lg-4">
+    <div class="card text-white bg-primary mb-3">
+      <div class="card-header">Record</div>
+      <div class="card-body">
+        <h4 class="card-title">(W-L-D)</h4>
+        <p class="card-text">
+          This is a measure of the fighter's record in previous combat sports events. "W" is the number of wins a fighter has, "D" is draws (i.e. no winner) and "L" is the number of losses they have incurred.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>  
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../static/js/list_maker.js"></script>
+    <script src="../static/js/update_cards.js"></script>
+    <script src="../static/js/predictor.js"></script>
+
+</body>
