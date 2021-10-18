@@ -4,4 +4,4 @@ Flask-SQLAlchemy==2.5.1
 gunicorn==20.1.0
 Keras
 SQLAlchemy==1.4.25
-Tensorflow-cpu=2.5
+Tensorflow-cpu==2.5
