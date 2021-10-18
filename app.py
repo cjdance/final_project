@@ -7,6 +7,12 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.ext.declarative import declarative_base
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder, MinMaxScaler
+from tensorflow.keras.utils import to_categorical
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.models import load_model
 
 
 
@@ -74,7 +80,7 @@ def form():
      
 
 
-@app.route('/data')
+@app.route('/data', methods=['GET', 'POST'])
 def predict():
     if request.method == 'GET':
         return render_template('index.html')
@@ -84,9 +90,9 @@ def predict():
         form_f1 = request.form['f1']
         form_f2 = request.form['f2']
 
-        fighters = fighterModel.query.all()
+        fighters = fighterModel.query.filter((fighterModel.name == form_f1) | (fighterModel.name == form_f2))
         results = [{
-        "name": form_f1,
+        "name": fighter.name,
         "stance": fighter.stance,
         "weight": fighter.weight,
         "SApM": fighter.sig_str_abs_pM,
@@ -101,9 +107,24 @@ def predict():
         "subs": fighter.sub_avg
         } for fighter in fighters]
 
+        fighters = [results[0]["SApM"],results[0]["SLpct"], results[0]["SApM"],results[1]["SApM"],results[1]["SLpct"], results[1]["SApM"]]
+
+        
+        ufc_model = load_model("models/ufc_model_trained_2.h5")
+
+        encoded_predictions = ufc_model.predict_classes([fighters])
+
+        if encoded_predictions == 0:
+
+            winner = f'Predicted Winner: {results[0]["name"]}'
+
+        else:
+
+            winner = f'Predicted Winner: {results[1]["name"]}'
+
         response = jsonify(results)
         response.headers.add('Access-Control-Allow-Origin', '*')
-        return render_template("data.html", data=response)
+        return render_template("data.html", data=winner)
         
 
 #================================================================================
